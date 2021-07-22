@@ -1,0 +1,7 @@
+#!/bin/bash
+echo -e "Introducce un número: \c"
+read num1
+echo -e "Introduzca una cadena de caracteres: \c"
+read cad1
+echo -e "Los valores introduccidos son: \t$num1 \ty \t$cad1"
+echo "Fin de ejecución de introduccir2"

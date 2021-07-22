@@ -1,0 +1,13 @@
+#!/bin/bash
+numfi=`ls -p | grep -v / | wc -l`
+numfip=`ls -p | grep -v / | wc -l`
+dan=`pwd`
+echo "El número de ficheros del directorio actual es: $numfi"
+echo "El número de ficheros en el directorio $dan es: $numfip"
+if test $numfi -eq $numfip
+then
+	echo "Coincide el número de ficheros de ambos directorios"
+else
+	echo "No coincide el número de ficheros de ambos directorios"
+fi
+echo "Fil del shell cuenta-dir"

@@ -1,0 +1,8 @@
+echo "Los usuarios conectados son:"
+who
+echo "El directorio actual es:"
+pwd
+echo "Los procesos del sistema son:"
+ps
+cd /
+echo "Fin de script estado"

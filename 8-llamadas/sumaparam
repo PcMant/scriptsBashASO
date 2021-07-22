@@ -1,0 +1,14 @@
+#!/bin/bash
+if test ! "$1" -a ! "$2"
+then
+	read -p "Introduce el primer número: " n1
+	set $n1 $2
+fi
+if test ! "$2"
+then
+	read -p "Introduce el segundo número: " n2
+	set $1 $n2
+fi
+let resultado=$1+$2
+bash ../3-operaciones/sumaparam $1 $2
+echo "$1+$2=$resultado"

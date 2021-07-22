@@ -1,0 +1,6 @@
+#!/bin/bash
+read -p "Introducce un número:" nu1
+read -p "Introducce otro número:" nu2
+let resultado=$nu1+$nu2
+echo "$nu1 + $nu2= $resultado"
+echo "Fin del script suma"

@@ -1,0 +1,61 @@
+#!/bin/bash
+echo "OPCIONES"
+echo "1. Visualizar por pantalla"
+echo "2. Cambiar de nombre"
+echo "3. Copiar en otro directorio"
+echo "4. Borrar"
+echo
+read -p "Introducce opción: " opcion
+case $opcion in
+	1)
+	read -p "Introducce el nombre de fichero: " nombre
+	if test -r $nombre
+	then
+		echo
+		echo "Contenido del fichero $nombre:"
+		cat $nombre
+	else
+		echo "El fichero introduccido no existe o no tiene permisos de lectura"	
+	fi;;
+	2)
+	read -p "Introducce el nombre de fichero: " nombre
+	if test -w $nombre
+	then
+		read -p "Introducce el nuevo nombre del fichero: " nombre2
+		if test -e $nombre2
+		then
+			echo "El nombre no ha sido cambiado porque ya existe un fichero con ese nombre"
+		else
+			mv $nombre $nombre2
+			echo "Fichero cambiado de nombre: $nombre -> $nombre2"
+		fi
+	else
+		echo "El fichero introducido no existe o no tiene permisos de escritura"
+	fi;;
+	3)
+	read -p "Introducce el nombre de fichero: " nombre
+	if test -r $nombre
+	then
+		read -p "Introducce el directorio a donde quieres copiar el fichero sin la barra final: " di
+		if test -d $di -a -x $di
+		then
+			cp $nombre $di/$nombre
+			echo "El fichero a sido copiado al directorio $di"
+		else
+			echo "El directorio introducido no existe o no tiene permisos de escritura"
+		fi
+	else
+		echo "El fichero introducido no existe o no tiene permisos de lectura"
+	fi;;
+	4)
+	read -p "Introducce el nombre de fichero: " nombre
+	if test -w $nombre
+	then
+		rm $nombre
+		echo "El fichero $nombre ha sido borrado"
+	else
+		echo "El fichero introduccido no existe o no tiene permisos de escritura"
+	fi;;
+	*)echo "Debe de insertar una opción del 1 al 5";;
+esac
+echo "Fin del Shell proceso"

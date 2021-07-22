@@ -1,0 +1,16 @@
+#!/bin/bash
+if test -e $1
+then
+	echo "El fichero existe"
+	if test -r $1
+	then
+		echo "El fichero tiene permisos de lectura y se puede leer."
+		echo "contenido del fichero $1:"
+		cat $1
+	else
+		echo "El fichero no tiene permisos de lectura."
+		echo "Este fichero no se puede leer."
+	fi
+else
+	echo "El fichero $1 no existe."
+fi

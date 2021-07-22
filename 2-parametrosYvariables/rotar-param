@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "El valor \$1 es:..........$1"
+echo "El valor \$2 es:..........$2"
+echo "El valor \$3 es:..........$3"
+echo "El valor \$4 es:..........$4"
+echo
+echo "Se desplazan 2 posiciones el valor de los parámetros"
+shift 2
+echo "El valor \$1 es:..........$1"
+echo "El valor \$2 es:..........$2"
+echo "El valor \$3 es:..........$3"
+echo "El valor \$4 es:..........$4"
+echo "Fin de ejecución de rotar-param"

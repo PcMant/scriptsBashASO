@@ -1,0 +1,11 @@
+#!/bin/bash
+read -p "Introducce un número:" numero
+let mul=1
+echo
+echo "Tabla del $numero"
+while [ "$mul" -lt "11" ]
+do
+	let resultado=$mul*$numero
+	echo "$mul x $numero= $resultado"
+	let mul=mul+1
+done

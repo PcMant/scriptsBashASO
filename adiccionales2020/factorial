@@ -1,0 +1,17 @@
+#!/bin/bash
+factorial=1
+read -p "Introducce un número: " num
+echo -e "!$num= $num\c"
+while test "$num" -gt "1"
+do	
+	let factorial=$factorial*$num
+	if test "$num" -gt "1"
+	then
+		echo -e "*\c"
+	fi
+	let num=$num-1
+	echo -e "$num\c"
+done
+echo "= $factorial"
+echo
+echo "Fin del shell factorial"

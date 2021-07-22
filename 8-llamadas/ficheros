@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "1.-Procesar fichero"
+echo "2.-Buscar información en un fichero"
+echo "3.-Trabajar con permisos de ficheros"
+echo
+read -p "Selecciona una opción del menú: " opc
+case $opc in
+	1) bash ../4-if_test/mi-cat;;
+	2) bash ../6-while/buscar;;
+	3) bash ../adiccionales2020/permisos;;
+	*) echo "Debe de introduccir una opción del 1 al 3";;
+esac
+echo
+echo "Fin del sehll ficheros"

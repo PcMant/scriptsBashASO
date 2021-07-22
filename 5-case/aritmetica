@@ -1,0 +1,21 @@
+#!/bin/bash
+echo -e "Introducce un número: \c"; read n1
+echo -e "Introducce un segundo número: \c"; read n2
+echo
+echo "OPERADORES"
+echo "Suma(+)"
+echo "Resta(-)"
+echo "Multiplicación(*)"
+echo "División(/)"
+echo
+echo -e "Introducce un operador: \c"; read opera
+case $opera in
+	+)let resultado=$n1+$n2;;
+	-)let resultado=$n1-$n2;;
+	"*")let resultado=$n1*$n2;;
+	/)let resultado=$n1/$n2;;
+	*) echo "no has introduccido un operando";;
+esac
+echo
+echo "El resultado: $n1$opera$n2= $resultado"
+echo "Fin del shell aritmetica"

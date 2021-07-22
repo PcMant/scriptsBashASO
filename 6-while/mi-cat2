@@ -1,0 +1,43 @@
+#!/bin/bash
+estado=1
+intro=0
+noe=0
+nole=0
+leido=0
+ex=0
+while [ "$estado" -eq "1" ]
+do
+	read -p "Introducce el nombre del fichero: " nombre
+	if test "$nombre" = "*"
+	then
+		estado=0
+	else
+		let intro=$intro+1
+		if test -e "$nombre"
+		then
+			let ex=$ex+1
+		fi
+		if test -r "$nombre"
+		then
+			echo "Contenido del fichero $nombre:"
+			cat $nombre
+			let leido=$leido+1
+		else
+			echo "El fichero que has introduccido no existe o no tiene permisos de ejecución."
+			echo "Debe de introduccir un nombre de fichero correcto."
+			let nole=$nole+1
+			if test ! -e "$nombre"
+			then
+				let noe=$noe+1
+				let nole=$nole-1
+			fi
+		fi
+	fi
+done
+echo
+echo "NÚMERO DE FICHEROS INTRODUCIDOS: $intro"
+echo "NÚMERO DE FICHEROS NO EXISTENTES: $noe"
+echo "NÚMERO DE FICHEROS NO LEGIBLES: $nole"
+echo "NÚMERO DE FICHEROS VISUALIZADOS: $leido"
+echo "NÚMERO DE FICHEROS EXISTENTES: $ex"
+echo "Fin del Shell mi-cat2"

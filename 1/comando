@@ -1,0 +1,13 @@
+#!/bin/bash
+#shellscript comando que realiza
+echo -e "Introducca un comando: \c"
+read var1
+echo "El comando introduccido es: $var1"
+echo "El comando introduccido es: \"$var1\""
+echo "\"El comando introduccido es: $var1\""
+echo
+echo
+echo "La ejecución del comando $var1 es la siguiente:"
+$var1
+echo
+echo "Find de ejecución de '$var1'"

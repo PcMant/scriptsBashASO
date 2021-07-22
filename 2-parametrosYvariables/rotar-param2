@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "El valor \$1 es:..........$1"
+echo "El valor \$2 es:..........$2"
+echo "El valor \$3 es:..........$3"
+echo "El valor \$4 es:..........$4"
+echo -e "Introduce el número de posiciones a desplazar: \c"
+read pos
+shift $pos
+echo "El valor \$1 es:..........$1"
+echo "El valor \$2 es:..........$2"
+echo "El valor \$3 es:..........$3"
+echo "El valor \$4 es:..........$4"

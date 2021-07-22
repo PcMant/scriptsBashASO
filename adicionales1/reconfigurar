@@ -1,0 +1,26 @@
+#!/bin/bash
+fehora=`date +'%d-%b-%Y_%H:%M:%S'`
+case $1 in
+	dhcp)
+	echo "Haciendo copia de seguridad del fichero de configuración dhcpd.conf"
+	cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf_$fehora
+	echo "Fichero de configuración respaldado, ya puede editarlo"
+	nano /etc/dhcp/dhcpd.conf
+	echo "Fin de la configuración y comenzando reinicio."
+	service isc-dhcp-server restart
+	echo "dhcpd ha sido reiniciado";;
+	dns)
+	echo "Comenzando con el respaldo de los ficheros de configuración de bind9"
+	cp /etc/bind/named.conf.local /etc/bind/named.conf.local_$fehora
+	cp /etc/bind/db.micentro /etc/bind/db.micentro_$fehora
+	cp /etc/bind/db.192 /etc/bind/db.192_$fehora
+	echo "Ficheros de configuración respaldados y comienzo de la configuración de los ficheros"
+	nano /etc/bind/named.conf.local
+	nano /etc/bind/db.micentro
+	nano /etc/bind/db.192
+	echo "Fin de la configuración y comienzo del reinicio del servidor dns"
+	service bind9 restart
+	echo "El servidor dns ha sido reiniciado";;
+	*)echo "Debe de introduccir el parámetro dhcp o dns.";;
+esac
+echo "Fin de la shel reconfigurar"

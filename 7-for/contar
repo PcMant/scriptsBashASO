@@ -1,0 +1,48 @@
+#!/bin/bash
+nfich=0
+ndir=0
+fich=0
+dir=0
+for i in `ls`
+do
+	dir=0
+	fich=0
+	if test -d "$i"
+	then
+		echo "DIRECTORIO $i"
+		ls $i
+		let ndir=$ndir+1
+		for dd in `ls $i`
+		do
+			if test -d $dd
+			then
+				let dir=$dir+1
+			else
+				let fich=$fich+1
+			fi	
+		done
+		echo
+		echo "Número de ficheros: $fich"
+		echo "Número de directorios: $dir"
+		echo
+		echo
+	fi
+	if test -r "$i" -a ! -d "$i"
+	then
+		echo "FICHERO $i"
+		line=`cat $i | wc -l`
+		echo "Número de líneas: $line"
+		palabras=`cat $i | wc -w`
+		echo "Número de palabras: $palabras"
+		caracter=`cat $i | wc -c`
+		echo "Número de caracteres: $caracter"
+		let nfich=$nfich+1
+		echo
+		echo
+	fi
+	
+
+done
+echo "Se han procesado $nfich ficheros y $ndir directorios"
+echo "Fin del shell contar"
+

@@ -1,0 +1,11 @@
+#!/bin/bash
+for i in `ls -p | grep -v /`
+do
+	echo "Contenido del fichero $i:"	
+	cat $i
+	echo
+	let cantidad=$cantidad+1
+done
+echo "Se han procesado $cantidad ficheros."
+echo "Fin del shell listado"
+

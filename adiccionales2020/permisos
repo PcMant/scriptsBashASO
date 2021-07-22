@@ -1,0 +1,51 @@
+#!/bin/bash
+estado=1
+while test "$estado" -eq "1"
+do
+	echo "======================MENU======================="
+	echo "Visualizar información de un fichero............1"
+	echo "Dar permisos a un fichero.......................2"
+	echo "Quitar permisos a un fichero....................3"
+	echo "Salir del programa..............................0"
+	echo
+	read -p "Seleccione una opción del 0 al 3: " opcion
+	case $opcion in
+		0)estado=0;;
+		1)
+		read -p "Introducce el nombre de un fichero: " fich
+		if test -r $fich
+		then
+			cat $fich
+		else
+			echo "El fichero introduccido no existe o no tiene permisos de lectura"
+		fi;;
+		2)
+		read -p "Introducce el nombre de un fichero: " fich
+		if test -e $fich
+		then
+			chown 777 $fich
+		else
+			echo "El fichero introduccido no existe"
+		fi;;
+
+		3)
+		read -p "Introducce el nombre de un fichero: " fich
+		if test -e $fich
+		then
+			chown 000 $fich
+		else
+			echo "El fichero introduccido no existe"
+		fi;;
+		*) echo "Opción introduccida incorrecta"
+	esac
+	read -p "Desea continuar?(si,no): " conti
+	case $conti in
+		si)estado=1;;
+		no)estado=0;;
+		*)
+		echo "Entrada introduccida incorrecta"
+		estado=0;;
+	esac
+done
+echo "Fin del shell permisos"
+	

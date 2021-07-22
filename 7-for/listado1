@@ -1,0 +1,38 @@
+#!/bin/bash
+nfich=0
+ndir=0
+for i in `ls ..`
+do
+	if test -d "../$i" -a -r "../$i"
+	then
+		echo "DIRECTORIO $i"
+		ls ../$i
+		let ndir=$ndir+1
+		echo
+	fi
+	if test -d "../$i" -a ! -r "../$i"
+	then
+		echo "DIRECTORIO $i"
+		echo "ERROR: El directorrio $i no tiene permisos de lectura."
+		let ndir=$ndir+1
+		echo
+	fi
+	if test -r "../$i" -a ! -d "../$i" -a -r "../$i"
+	then
+		echo "FICHERO $i"
+		cat ../$i
+		echo
+		let nfich=$nfich+1
+	fi
+	if test -r "../$i" -a ! -d "../$i" -a ! -r "../$i"
+	then
+		echo "FICHERO $i"
+		echo "ERROR: El fichero $i no tiene permisos de lectura."
+		echo
+		let nfich=$nfich+1
+	fi
+
+done
+echo "Se han procesado $nfich ficheros"
+echo "Se han procesado $ndir directorios"
+echo "Fin del shell listado1"

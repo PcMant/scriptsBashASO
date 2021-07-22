@@ -1,0 +1,58 @@
+#!/bin/bash
+estado=s
+estaG=1
+pass2=01
+echo "SHELL PARA LA CREACIÓN DE USUARIOS"
+echo
+while test "$estado" = "s"
+do
+	read -p "Introducce el nombre de usuario a crear: " usuario
+	if test ! `cut /etc/passwd -d: -f1 | grep $usuario | wc -l` -eq "0"
+	then
+		echo "ERROR: El usuario no se puede crear porque ya existe."
+	else
+		read -p "Introducce un intérprete de órdenes: " shell
+		read -p "Introducce un directorio para el usuario: " directorio
+		if test ! `cut /etc/passwd -d: -f6 | grep $directorio | wc -l` -eq "0"
+		then
+			echo "ERROR: El $directorio ya ha sido asignado a un usuario."
+		else
+			while test "$estaG" -eq "1"
+			do
+				read -p "Introducce a que grupo quiere que pertenezca: " grupo
+				if test `cut /etc/group -d: -f1 | grep $grupo | wc -l` -eq "0"
+				then
+					echo
+					echo "El grupo $grupo no existe."
+					echo "Debe de intentarlo con un grupo que existe."
+				else
+					estaG=0
+				fi
+			done
+			until [ "$pass" = "$pass2" ]
+			do
+			read -sp "Introduce una contraseña: " pass
+			echo
+			read -sp "Introduce de nuevo la misma contraseña: " pass2
+			if test ! "$pass" = "$pass2"
+			then
+				echo
+				echo "La contraseña no conincide, intentelo de nuevo."
+			fi
+			done
+			useradd -g $grupo -d $directorio -m -s $shell -p $pass $usuario
+			if test `cut /etc/passwd -d: -f1 | grep $usuario | wc -l` -eq "0"
+			then
+				echo
+				echo "El usuario $usuario no ha podido ser creado, revise su configuración y intentelo de nuevo."
+			else
+				echo			
+				echo "El usuario $usuario creado correctamente"
+			fi
+		fi
+	fi
+
+
+read -p "Desea crear otro usuario nuevo?(s/n): " estado
+done
+echo "Fin del script alta_usuarios"

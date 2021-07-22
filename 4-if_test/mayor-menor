@@ -1,0 +1,10 @@
+#!/bin/bash
+read -p "Introducce un número: " n1
+read -p "Introducce un segundo número: " n2
+if test "$n1" -gt "$n2"
+then
+	echo "El número mayor es $n1 y el menor $n2"
+else
+	echo "El número mayor es $n2 y el menor $n1"
+fi
+echo "Fin del shell mayor-menor"

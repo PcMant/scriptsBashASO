@@ -1,0 +1,6 @@
+#!/bin/bash
+echo -e "Introducce un número: \c"; read num1
+echo -e "Introducce un una cadena de caracteres: \c"; read cad1
+echo "Los valores introduccidos son:"
+echo $num1
+echo $cad1

@@ -1,0 +1,11 @@
+#!/bin/bash
+contador=1
+read -p "Introducce un número: " num
+echo "La tabla de multiplicar de $num:"
+while (($contador<=10))
+do
+	let resultado=$num*$contador
+	echo "$num x $contador= $resultado"
+	let contador=$contador+1
+done
+echo "Fin de la shell tabla_multiplicar"

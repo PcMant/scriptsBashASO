@@ -1,0 +1,15 @@
+#!/bin/bash
+estado=s
+while test "$estado" = "s"
+do
+	read -p "Introducce cadena a buscar: " cadena
+	read -p "Introducce nombre de fichero: " fichero
+	if test ! -e "$fichero"
+	then
+		echo "El fichero no existe"
+	else
+		grep $cadena $fichero
+	fi
+	read -p "¿Quiere continuar (s/n)?: " estado
+done
+	

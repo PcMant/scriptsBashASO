@@ -1,0 +1,6 @@
+numfi=`ls -l | wc -l`
+echo "El número de fichero es: $numfi"
+if test $numfi -gt 10
+then
+	echo "Hay más de 10 ficheros"
+fi

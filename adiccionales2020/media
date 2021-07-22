@@ -1,0 +1,31 @@
+#!/bin/bash
+estado=s
+n1=0
+n2=0
+suma=0
+maxi=0
+cantidad=1
+while test "$estado" = "s"
+do
+	n1=n2
+	read -p "Introducce una calificación: " n1 
+	let suma=$n1+$suma
+	if test $n1 -gt $n2
+	then
+		if test $n1 -gt $maxi
+		then
+			maxi=$n1
+		fi
+	else
+		if test $n2 -gt $maxi
+		then
+			maxi=$n2
+		fi
+	fi
+	let media=$suma/$cantidad
+	read -p "Desea continuar?(s/n): " estado
+	let cantidad=$cantidad+1
+done
+echo "Nota media: $media"
+echo "Nota más alta: $maxi"
+echo "Fin de la shell media"

@@ -1,0 +1,15 @@
+#!/bin/bash
+if test -d $1
+then
+	if test -r $1
+	then
+		echo "Listado del directorio $1."
+		ls $1
+	else
+		echo "El directorio $1 no tiene permisos de lectura"
+		echo "El directorio $1 no se puede listar"
+	fi
+else
+	echo "El directorio $1 no existe"
+fi
+echo "Fin del shel mi-ls"

@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "El valor de \$1 es:............$1"
+echo "El valor de \$2 es:............$2"
+echo "El valor de \$3 es:............$3"
+echo "Introducce tres cadenas de caracteres:"
+read cad1
+read cad2
+read cad3
+set $cad1 $cad2 $cad3
+echo "El valor de \$1 es:............$1"
+echo "El valor de \$2 es:............$2"
+echo "El valor de \$3 es:............$3"
+

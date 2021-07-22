@@ -1,0 +1,21 @@
+#!/bin/bash
+let estado=1
+while [ "$estado" -eq "1" ]
+do
+	read -p "Introducce el nombre del fichero: " nombre
+	if test "$nombre" = "*"
+	then
+		estado=0
+	else
+		if test -r "$nombre"
+		then
+			echo "Contenido del fichero $nombre:"
+			cat $nombre
+			estado=0
+		else
+			echo "El fichero que has introduccido no existe o no tiene permisos de ejecución."
+			echo "Debe de introduccir un nombre de fichero correcto."
+		fi
+	fi
+done
+echo "Fin del Shell mi_cat1"

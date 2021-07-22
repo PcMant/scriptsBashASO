@@ -1,0 +1,8 @@
+#!/bin/bash
+set `date`
+echo "El nombre del día es: $1"
+echo "El mes es: $2"
+echo "El número del día es: $3"
+echo "El año es: $6"
+echo "La hora es: $3"
+echo "Fin de la ejecución del shellscript fecha"
